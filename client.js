@@ -11,7 +11,7 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log('Connection established ... ');
-    conn.write('Name: KG');
+    // conn.write('Name: Kurtis');
   });
 
   // setInterval(() => {
