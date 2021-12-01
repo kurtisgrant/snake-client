@@ -11,15 +11,18 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log('Connection established ... ');
-    conn.write('Name: Kurtis');
+    conn.write('Name: KG');
   });
 
   // setInterval(() => {
-  //   conn.write('Move: up');
+  //   conn.write('Move: down');
   // }, 500);
   // setInterval(() => {
-  //   conn.write('Move: right');
+  //   conn.write('Move: up');
   // }, 600);
+  // setInterval(() => {
+  //   conn.write('Move: right');
+  // }, 1200);
 
   conn.on('data', (data) => {
     console.log(data);
