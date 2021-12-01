@@ -11,7 +11,9 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log('Connection established ... ');
-    // conn.write('Name: Kurtis');
+    conn.write('Name: Kurtis');
+    conn.write('Colour: Blue');
+    conn.write('Color: Yellow');
   });
 
   // setInterval(() => {

@@ -1,20 +1,20 @@
 const { connect } = require('./client');
 const { setupInput } = require('./input');
+const { lyricParser, cej } = require('./lyricParser');
+
+let i = -1;
+const getNextLyric = () => {
+  i++;
+  return cej[i % cej.length];
+};
 
 
-
-let msg = 'This is a test of Kurtis\'s scrolling message...  ';
 console.log("Connecting ...");
 const conn = connect();
 
 setInterval(() => {
+  conn.write(`Say: ${getNextLyric()}`);
+}, 400);
 
-  // console.log(`Name: ${msg}`);
-  conn.write(`Name: ${msg}`);
-
-  const tmp = msg[0];
-  msg = msg.slice(1) + tmp;
-
-}, 600);
 
 setupInput(conn);
