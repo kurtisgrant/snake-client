@@ -1,20 +1,24 @@
 const { connect } = require('./client');
 const { setupInput } = require('./input');
-const { lyricParser, cej } = require('./lyricParser');
+const { SONGS } = require('./constants');
+const { lyricParser } = require('./lyricParser');
 
-let i = -1;
+const lyrics = lyricParser(SONGS.beatIt);
+
+let thisLyric = lyrics;
 const getNextLyric = () => {
-  i++;
-  return cej[i % cej.length];
+  const thisL = thisLyric;
+  const fstChar = thisLyric[0];
+  thisLyric = thisLyric.slice(1) + fstChar;
+  return '| ' + thisL.slice(0, 12) + ' |';
 };
-
-
 console.log("Connecting ...");
 const conn = connect();
 
 setInterval(() => {
-  conn.write(`Say: ${getNextLyric()}`);
-}, 400);
+  lyric = getNextLyric();
+  conn.write(`Say: ${lyric}`);
+}, 150);
 
 
 setupInput(conn);
